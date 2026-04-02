@@ -10,7 +10,11 @@
       Encuentra proveedores verificados para abastecer tu empresa con los
       estándares más altos del mercado B2B.
     </p>
-    <th-search-input></th-search-input>
+    <th-search-input
+      placeholder="¿Qué estás buscando hoy?"
+      btnLabel="Explorar proveedores"
+      (onClick)="handleSearch($event)"
+    />
   </div>
 </section>
 
@@ -69,7 +73,7 @@
           Por qué las empresas eligen TradeHub?
         </h2>
         <div class="space-y-8">
-          @for(feature of trustFeatures(); track feature.icon) {
+          @for(feature of trustFeatures; track feature.icon) {
           <div class="flex gap-4">
             <div
               class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-secondary"
@@ -88,10 +92,9 @@
           }
         </div>
       </div>
+
       <div class="group relative">
-        <div
-          class="absolute -inset-1 rounded-2xl bg-linear-to-r from-secondary to-tertiary-fixed opacity-25 blur transition duration-1000 group-hover:opacity-50 group-hover:duration-200"
-        ></div>
+        <div class="home__trust__background"></div>
         <div class="relative rounded-2xl border border-white/10 bg-primary p-8">
           <p class="font-headline mb-8 text-2xl font-medium italic">
             "TradeHub transformó nuestra cadena de suministro. Encontramos

@@ -1,2 +1,114 @@
-<h1>Providers landing page!</h1>
-<a routerLink="/providers/list">Ir a la lista</a>
+<section class="page__hero">
+  <div class="page__hero__content">
+    <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+      <div>
+        <th-chip class="mb-6">Marketplace Global</th-chip>
+        <h1 class="th-heading-1 mb-8 leading-none lg:text-7xl!">
+          Explora Sectores de
+          <span
+            class="bg-linear-to-r from-secondary to-secondary-container bg-clip-text text-transparent"
+            >Industria</span
+          >
+        </h1>
+        <p
+          class="mb-10 max-w-xl text-lg leading-relaxed text-on-surface-variant"
+        >
+          Conecte con proveedores especializados en más de 50 sectores
+          industriales. Nuestra infraestructura digital facilita el comercio B2B
+          de alto valor con seguridad y autoridad.
+        </p>
+        <div class="flex items-center gap-4">
+          <a th-btn routerLink="list">Ver Directorio Completo</a>
+          <button
+            th-btn
+            th-btn-color="neutral"
+            class="hover:bg-surface-container rounded-xl bg-white px-8 py-4 font-semibold text-on-surface transition-all"
+          >
+            Asesoría Técnica
+          </button>
+        </div>
+      </div>
+      <div class="relative hidden lg:block">
+        <div
+          class="absolute -top-20 -right-20 h-96 w-96 rounded-full bg-secondary/5 blur-3xl"
+        ></div>
+        <th-card class="relative rotate-2 p-4" [elevation]="6">
+          <img
+            alt="Professional industrial environment"
+            class="h-[400px] w-full rounded-xl object-cover"
+            data-alt="Modern high-tech industrial manufacturing facility with robotic arms and clean professional lighting in a blue-tinted atmosphere"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYjjIxccEOhvtc6wqMTm9cuGvC6wxVEV_mam-pd3LCIUkqxV3DyUS4OboW2BfsFSX3XUaW78LEFL5fgYRawPXQIvXSJYG64wpzO3BNv3x4ZUkd-P--edBaZOjeafbmWqKz62L06U2d6qBdBkBiJ0Q07vGfcX70VytE5ld-yNL7OkPnnulSYfAGgFSiJHBwTmHCr_M6gayUmfRlCD1F4iVuKe6I2_6J9TxO9MNRJDb9co0TrgSe1rjC26a2bFVaaEi7ea2RWDzPZJk"
+          />
+          <th-card
+            [elevation]="1"
+            class="absolute -bottom-6 -left-6 flex! items-center gap-4 rounded-xl border border-outline-variant/10 bg-white p-6"
+          >
+            <div
+              class="flex h-12 w-12 items-center justify-center rounded-full bg-tertiary-fixed"
+            >
+              <th-icon
+                name="rosette-discount-check"
+                class="text-2xl text-on-tertiary-fixed"
+              />
+            </div>
+            <div>
+              <p class="text-xs font-medium text-on-surface-variant">
+                Proveedores Verificados
+              </p>
+              <p class="th-heading-5 font-bold text-on-surface">
+                +12,500 Empresas
+              </p>
+            </div>
+          </th-card>
+        </th-card>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="container px-8 py-24">
+  <div class="mb-16 max-w-2xl">
+    <h2 class="th-heading-2 mb-4">Categorías Principales</h2>
+    <p class="text-neutral-500">
+      Estructura jerárquica diseñada para la eficiencia operativa en
+      adquisiciones industriales de gran escala.
+    </p>
+  </div>
+  <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+    <th-card
+      class="group overflow-hidden border border-outline-variant/5 transition-all duration-500 hover:shadow-2xl"
+    >
+      <div th-card-header class="relative h-48 overflow-hidden">
+        <img
+          alt="Tecnología"
+          class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+          data-alt="Close-up of a high-tech circuit board with blue glowing lights and intricate microchip patterns representing advanced computing"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJcIYOrOJlCdaTR8MxJiqyNoI6wOPU84qGG0aJLdKL5236MlwiWXZpnFkfA3yncTAGRFQiM6PXtUqyHpuUclmHb-2GIIoA1Df7NrxIYhVWM13xN-JlX5qz4GO6hu98iRVEzkfkTxBLRFWCEg1fXZn_XqfgtfHYwYhGP8dCQb9ee8k4X5g3YCoGJJmh1V9-VokpbQjOi6kIwEeWepxsXfQjQt66tD6VoM1gnRVXQj3kyQaD6hDe1C6FR1hYxo5TMt5Bn4z_VbbET14"
+        />
+        <div
+          class="absolute inset-0 bg-linear-to-t from-primary/80 to-transparent"
+        ></div>
+        <div class="absolute bottom-4 left-4 flex items-center gap-3">
+          <div
+            class="flex h-10 w-10 items-center justify-center rounded-lg bg-white/20 text-white backdrop-blur-md"
+          >
+            <th-icon name="cpu" class="text-2xl" />
+          </div>
+          <h3 class="font-heading text-lg font-bold text-white">Tecnología</h3>
+        </div>
+      </div>
+      <div th-card-content class="p-6">
+        <p class="mb-6 line-clamp-2 text-sm text-on-surface-variant">
+          Hardware empresarial, infraestructura cloud y soluciones de software
+          crítico.
+        </p>
+        <div class="space-y-3">
+          <div class="flex flex-wrap gap-2">
+            <th-chip [square]="true"> Servidores </th-chip>
+            <th-chip [square]="true"> Ciberseguridad </th-chip>
+            <th-chip [square]="true"> IA </th-chip>
+          </div>
+        </div>
+      </div>
+    </th-card>
+  </div>
+</section>

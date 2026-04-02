@@ -1,14 +1,22 @@
-<div
-  class="mx-auto flex w-full max-w-3xl flex-col items-center gap-2 rounded-2xl bg-white p-2 shadow-xl shadow-on-surface/5 md:flex-row"
->
-  <div class="flex w-full flex-1 items-center px-4">
-    <th-icon name="search" class="mr-4 text-2xl"></th-icon>
+<form class="search-input">
+  <div class="search-input__wrapper">
+    <th-icon [name]="icon()" class="search-input__icon" />
     <input
-      class="placeholder:text-outline/60 w-full border-none bg-transparent py-4 font-medium text-on-surface focus:ring-0 focus:outline-none"
-      placeholder="¿Qué estás buscando hoy?"
+      class="search-input__input"
+      [placeholder]="placeholder()"
+      [(ngModel)]="searchTerm"
+      name="search-term"
       type="text"
     />
   </div>
-  <div class="hidden h-8 w-px bg-outline-variant/30 md:block"></div>
-  <button th-btn icon="arrow-right">Explorar proveedores</button>
-</div>
+  <div class="search-input__divider"></div>
+  <button
+    [th-btn]="btnOpts().variant || 'solid'"
+    [icon]="btnOpts().icon"
+    [th-btn-color]="btnOpts().color || 'secondary'"
+    type="submit"
+    (click)="handleClick()"
+  >
+    {{ btnLabel() }}
+  </button>
+</form>

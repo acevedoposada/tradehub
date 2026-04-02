@@ -66,4 +66,8 @@
       @apply absolute top-0 left-0 h-full w-full bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-secondary-container via-transparent to-transparent;
     }
   }
+
+  & .home__trust__background {
+    @apply absolute -inset-1 rounded-2xl bg-linear-to-r from-secondary to-tertiary-fixed opacity-25 blur transition duration-1000 group-hover:opacity-50 group-hover:duration-200;
+  }
 }

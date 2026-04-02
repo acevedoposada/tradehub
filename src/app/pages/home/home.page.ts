@@ -1,9 +1,10 @@
-import { Component, signal } from "@angular/core";
+import { Component, inject, signal } from "@angular/core";
 
 import ThSearchInputComponent from "@app/components/search-input/search-input.component";
 import ThIconComponent from "@app/components/icon/icon.component";
-import { RouterLink } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
 import ThProviderCardComponent from "@app/features/providers/components/card/card.component";
+import SearchStore from "@app/store/search.store";
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,9 @@ import ThProviderCardComponent from "@app/features/providers/components/card/car
   imports: [RouterLink, ThSearchInputComponent, ThIconComponent, ThProviderCardComponent],
 })
 export default class HomePage {
+  private router = inject(Router)
+  private searchStore = inject(SearchStore)
+
   categories = signal([
     { name: 'Tecnología', icon: 'device-desktop' },
     { name: 'Textiles', icon: 'hanger' },
@@ -20,7 +24,7 @@ export default class HomePage {
     { name: 'Marketing', icon: 'speakerphone' },
   ])
 
-  trustFeatures = signal([
+  trustFeatures = [
     {
       icon: 'rosette-discount-check',
       title: 'Verificación Rigurosa',
@@ -36,8 +40,10 @@ export default class HomePage {
       title: 'Soporte Estratégico',
       description: 'Asistencia personalizada para resolver tus dudas y necesidades.'
     }
-  ])
-  opinion = signal({
-
-  })
+  ]
+  
+  handleSearch(value: { searchTerm: string }) {
+    this.searchStore.setTerm(value.searchTerm)
+    this.router.navigate(['/providers/list'])
+  }
 }

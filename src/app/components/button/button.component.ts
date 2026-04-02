@@ -2,7 +2,8 @@ import { CommonModule } from "@angular/common";
 import { Component, computed, input, ViewEncapsulation } from "@angular/core";
 import ThIconComponent from "../icon/icon.component";
 
-export type ButtonVariant = 'solid' | 'outline' | 'tonal';
+export type ButtonVariant = 'solid' | 'outlined' | 'tonal'
+export type ButtonColor = 'primary' | 'secondary' | 'neutral' | 'danger'
 
 @Component({
   selector: 'button[th-btn],a[th-btn]',
@@ -21,7 +22,7 @@ export default class ThButtonComponent {
     alias: 'th-btn',
     transform: (value) => (value === '' ? 'solid' : (value as ButtonVariant))
   })
-  color = input<'primary' | 'secondary' | 'danger'>('secondary', { alias: 'th-btn-color' })
+  color = input<ButtonColor>('secondary', { alias: 'th-btn-color' })
   icon = input<string | undefined>()
   fullWith = input<boolean>(false, { alias: 'th-btn-full-width' })
 

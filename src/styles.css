@@ -73,9 +73,12 @@
   --color-surface: #f8f9ff;
   --color-surface-container-low: #eff4ff;
   --color-on-surface: #121c2a;
+  --color-on-surface-variant: #42474e;
   --color-outline-variant: #c2c7ce;
   --color-surface-container-high: #dee9fc;
+  --color-surface-container-low: #eff4ff;
   --color-on-primary-container: #7fa7cd;
+  --color-outline: #72777e;
 
   --radius: 0.25rem;
   --radius-lg: 0.5rem;

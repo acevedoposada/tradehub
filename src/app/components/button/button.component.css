@@ -63,3 +63,17 @@
     @apply bg-red-100 text-red-500 hover:bg-red-200;
   }
 }
+
+.th-btn--neutral {
+  &:is(.th-btn--solid) {
+    @apply bg-white text-neutral hover:bg-neutral-200;
+  }
+
+  &:is(.th-btn--outlined) {
+    @apply border-neutral text-neutral hover:bg-transparent;
+  }
+
+  &:is(.th-btn--tonal) {
+    @apply bg-neutral-100 text-neutral hover:bg-neutral-200;
+  }
+}
