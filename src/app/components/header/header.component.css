@@ -1,0 +1,18 @@
+@reference '../../../styles.css';
+
+.th-header {
+  @apply fixed top-0 z-50 w-full border-b border-slate-200/15 bg-white/60 shadow-sm backdrop-blur-xl;
+}
+
+.th-header__content {
+  @apply container grid px-8 py-4;
+  grid-template-columns: max-content auto max-content;
+}
+
+.th-header__links {
+  @apply flex items-center justify-center gap-8;
+}
+
+.th-header__spacing {
+  @apply h-20 w-12;
+}

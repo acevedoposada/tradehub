@@ -1,0 +1,19 @@
+@reference "../../../styles.css";
+
+.th-link {
+  @apply relative leading-tight font-medium transition-colors;
+
+  &::before {
+    content: " ";
+    @apply absolute right-0 bottom-0 left-0 h-0.5 rounded-full bg-transparent transition-all;
+  }
+
+  &.th-link--active {
+    @apply text-secondary;
+
+    &::before {
+      content: " ";
+      @apply -bottom-2 bg-secondary;
+    }
+  }
+}

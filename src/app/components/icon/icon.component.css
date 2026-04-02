@@ -1,0 +1,4 @@
+:host {
+  @apply inline-flex items-center justify-center leading-none;
+  font-size: var(--th-icon-size, inherit);
+}

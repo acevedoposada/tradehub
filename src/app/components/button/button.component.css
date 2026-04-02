@@ -1,0 +1,65 @@
+@reference "../../../styles.css";
+
+.th-btn {
+  @apply flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-secondary px-6 py-3 font-semibold text-white transition-all hover:bg-secondary-800 md:w-auto;
+
+  --th-icon-size: 1.25em;
+}
+
+.th-btn-icon {
+  @apply pr-4;
+}
+
+.th-btn--full-width {
+  @apply w-full;
+}
+
+.th-btn--outlined {
+  @apply border-2 border-secondary bg-transparent text-secondary hover:bg-transparent;
+}
+
+.th-btn--tonal {
+  @apply bg-secondary-100 text-secondary hover:bg-secondary-200;
+}
+
+.th-btn--primary {
+  &:is(.th-btn--solid) {
+    @apply bg-primary hover:bg-primary-800;
+  }
+
+  &:is(.th-btn--outlined) {
+    @apply border-primary text-primary hover:bg-transparent;
+  }
+
+  &:is(.th-btn--tonal) {
+    @apply bg-primary-100 text-primary hover:bg-primary-200;
+  }
+}
+
+.th-btn--secondary {
+  &:is(.th-btn--solid) {
+    @apply bg-secondary hover:bg-secondary-600;
+  }
+
+  &:is(.th-btn--outlined) {
+    @apply border-secondary text-secondary hover:bg-transparent;
+  }
+
+  &:is(.th-btn--tonal) {
+    @apply bg-secondary-100 text-secondary hover:bg-secondary-200;
+  }
+}
+
+.th-btn--danger {
+  &:is(.th-btn--solid) {
+    @apply bg-red-500 hover:bg-red-700;
+  }
+
+  &:is(.th-btn--outlined) {
+    @apply border-red-500 text-red-500 hover:bg-transparent;
+  }
+
+  &:is(.th-btn--tonal) {
+    @apply bg-red-100 text-red-500 hover:bg-red-200;
+  }
+}

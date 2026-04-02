@@ -1,0 +1,53 @@
+<div
+  class="group overflow-hidden rounded-2xl border border-outline-variant/10 bg-white transition-all duration-500 hover:shadow-xl"
+>
+  <div class="relative h-48 overflow-hidden">
+    <img
+      alt="Supplier facility"
+      class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+      src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtYzI4FlS-xc7RKeRwCy9STw_f0DpZTpt2pCoRftNEFN0Ur-jHP6rOzxOd2_BFnf5yG7sHQma3cy_mMHWEHRZ9oxPov7JSn5PKEYnUV_tPV2OOoPZUK4cQoXTCCxrBYEsV30IHk9LKvm6QPZH_rpx1GV8Jk-XFKvk4so6el_qJrBTdecdpKuKG_M0kJNKbfC3AvpckTFY2YbKmCiNgy6iGDAFDQiVYhWw4bGGi0yXvVOnZ_LgWsMSGMLcGg1t_XKajLzNSalkRnms"
+    />
+    <button
+      class="hover:text-error absolute top-4 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/80 text-on-surface backdrop-blur-md transition-colors"
+    >
+      <th-icon name="heart" class="text-xl" />
+    </button>
+    @if (verified()) {
+      <div class="absolute bottom-4 left-4">
+        <span
+          class="rounded-full bg-tertiary-fixed py-1 pr-2 pl-3 text-[10px] font-bold tracking-wider text-on-tertiary-fixed uppercase"
+        >
+          Verificado
+          <span class="inline-flex translate-y-[2px]">
+            <th-icon name="rosette-discount-check" class="text-sm" />
+          </span>
+        </span>
+      </div>
+    }
+  </div>
+  <div class="p-6">
+    <div class="mb-2 flex items-center gap-2">
+      <span class="th-caption text-secondary"> Tecnología </span>
+    </div>
+    <h3 class="th-heading-4 mb-1 text-on-surface">GlobalTech Solutions</h3>
+    <div class="text-on-surface-variant mb-4 flex items-center gap-1 text-sm">
+      <th-icon name="map-pin" class="text-sm" />
+      <span>San Francisco, CA</span>
+    </div>
+    <div
+      class="flex items-center justify-between border-t border-outline-variant/10 py-4"
+    >
+      <div>
+        <p class="text-outline text-[10px] font-bold uppercase">Desde</p>
+        <p class="text-lg font-extrabold text-on-surface">
+          $1,200 <span class="text-outline text-xs font-medium">/ud</span>
+        </p>
+      </div>
+      <div class="flex items-center gap-1">
+        <th-icon name="star" class="-mt-[2px] text-lg text-amber-400" />
+        <span class="font-bold text-on-surface">4.9</span>
+      </div>
+    </div>
+    <button th-btn="tonal" [th-btn-full-width]="true">Ver detalle</button>
+  </div>
+</div>

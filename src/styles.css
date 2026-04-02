@@ -1,9 +1,14 @@
 @import "tailwindcss";
 
+@import "./app/core/styles/typography.css";
+
+@import "@tabler/icons-webfont/dist/tabler-icons.css";
+
 @import "@fontsource/plus-jakarta-sans/400.css";
 @import "@fontsource/plus-jakarta-sans/500.css";
 @import "@fontsource/plus-jakarta-sans/600.css";
 @import "@fontsource/plus-jakarta-sans/700.css";
+@import "@fontsource/plus-jakarta-sans/800.css";
 
 @import "@fontsource/inter/400.css";
 @import "@fontsource/inter/500.css";
@@ -37,6 +42,7 @@
   --color-secondary-700: #214a99;
   --color-secondary-800: #17346e;
   --color-secondary-900: #1c6ed5;
+  --color-secondary-container: #5295fe;
 
   --color-tertiary: #22c55e;
   --color-tertiary-50: #ecfdf3;
@@ -49,6 +55,8 @@
   --color-tertiary-700: #15803d;
   --color-tertiary-800: #166534;
   --color-tertiary-900: #14532d;
+  --color-tertiary-fixed: #6bff8f;
+  --color-on-tertiary-fixed: #002109;
 
   --color-neutral: #1f2937;
   --color-neutral-50: #f9fafb;
@@ -61,10 +69,36 @@
   --color-neutral-700: #374151;
   --color-neutral-800: #1f2937;
   --color-neutral-900: #111827;
+
+  --color-surface: #f8f9ff;
+  --color-surface-container-low: #eff4ff;
+  --color-on-surface: #121c2a;
+  --color-outline-variant: #c2c7ce;
+  --color-surface-container-high: #dee9fc;
+  --color-on-primary-container: #7fa7cd;
+
+  --radius: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 9999px;
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+
+  @variant sm {
+    padding-inline: 2rem;
+  }
 }
 
 @layer base {
   body {
     color: var(--color-neutral);
+    background: var(--color-surface);
   }
+}
+
+html {
+  scroll-behavior: smooth;
 }

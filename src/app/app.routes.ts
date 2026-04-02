@@ -9,6 +9,23 @@ export const routes: Routes = [
       {
         path: '',
         loadComponent: () => import('./pages/home/home.page')
+      },
+      {
+        path: 'providers',
+        children: [
+          {
+            path: '',
+            loadComponent: () => import('./pages/providers/providers.page')
+          },
+          {
+            path: 'list',
+            loadComponent: () => import('./features/providers/pages/list/list.page')
+          },
+          {
+            path: ':id',
+            loadComponent: () => import('./features/providers/pages/detail/detail.page')
+          }
+        ]
       }
     ]
   }

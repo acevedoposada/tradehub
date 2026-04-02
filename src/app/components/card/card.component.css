@@ -1,0 +1,5 @@
+@reference "../../../styles.css";
+
+.card {
+  @apply rounded-2xl bg-white shadow-sm;
+}

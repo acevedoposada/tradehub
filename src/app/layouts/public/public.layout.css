@@ -1,0 +1,6 @@
+@reference '../../../styles.css';
+
+.layout__content {
+  @apply grid min-h-screen;
+  grid-template-rows: auto 1fr;
+}

@@ -1,0 +1,21 @@
+@reference "../../../styles.css";
+
+.th-footer {
+  @apply w-full border-t border-slate-200 bg-slate-50 text-primary;
+
+  & .th-footer__content {
+    @apply container grid grid-cols-1 gap-8 px-6 py-12 text-sm md:grid-cols-2 lg:grid-cols-4;
+  }
+
+  & .th-footer__bottom {
+    @apply border-t border-slate-200 px-12 py-8 text-center;
+  }
+
+  & .th-footer__copyright {
+    @apply text-xs text-slate-500;
+  }
+
+  & .th-footer__link {
+    @apply text-slate-500 transition-colors hover:cursor-pointer hover:text-slate-800;
+  }
+}

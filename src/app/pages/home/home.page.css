@@ -1,0 +1,69 @@
+@reference '../../../styles.css';
+
+.home__link {
+  @apply flex items-center gap-2 font-semibold text-secondary transition-all hover:gap-3;
+}
+
+.home__hero {
+  @apply relative flex min-h-[52rem] flex-col items-center justify-center overflow-hidden px-6;
+
+  & .home__hero__content {
+    @apply mx-auto max-w-4xl text-center;
+  }
+
+  & .home__hero__dot-right {
+    @apply absolute top-0 right-0 h-[800px] w-[800px] translate-x-1/4 -translate-y-1/2 rounded-full bg-secondary-container/10 blur-[120px] lg:right-[20%];
+  }
+
+  & .home__hero__dot-left {
+    @apply absolute bottom-0 left-0 h-[600px] w-[600px] -translate-x-1/4 translate-y-1/2 rounded-full bg-tertiary-fixed/10 blur-[100px] lg:left-[20%];
+  }
+}
+
+.home__categories {
+  @apply bg-surface-container-low px-8 py-24;
+
+  & .home__categories__grid {
+    @apply grid grid-cols-2 gap-6 md:grid-cols-5;
+  }
+
+  & .home__categories__item {
+    @apply flex cursor-pointer flex-col items-center rounded-2xl bg-white p-8 text-center shadow-sm transition-all duration-500 hover:bg-secondary;
+
+    & .category__card {
+      @apply mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-surface-container-high transition-colors group-hover:bg-white/20;
+    }
+
+    & .category__name {
+      @apply font-heading font-bold text-on-surface transition-colors group-hover:text-white;
+    }
+  }
+}
+
+.home__providers {
+  @apply container px-8 py-24;
+
+  & .home__providers__header {
+    @apply mb-12 flex items-center justify-between;
+
+    & .home__providers__title {
+      @apply font-heading text-3xl font-bold text-on-surface;
+    }
+  }
+
+  & .home__providers__grid {
+    @apply grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4;
+  }
+}
+
+.home__trust {
+  @apply relative overflow-hidden bg-primary py-24 text-white;
+
+  & .home__trust__overlay {
+    @apply absolute inset-0 opacity-10;
+
+    & .home__trust__dot {
+      @apply absolute top-0 left-0 h-full w-full bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-secondary-container via-transparent to-transparent;
+    }
+  }
+}

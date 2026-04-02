@@ -1,0 +1,40 @@
+/* Typography */
+.th-heading-1 {
+  @apply font-heading text-5xl leading-tight font-extrabold tracking-tight;
+}
+
+.th-heading-2 {
+  @apply font-heading text-4xl leading-snug font-bold tracking-tight;
+}
+
+.th-heading-3 {
+  @apply font-heading text-3xl leading-snug font-semibold tracking-tight;
+}
+
+.th-heading-4 {
+  @apply font-heading text-2xl leading-snug font-semibold tracking-tight;
+}
+
+.th-heading-5 {
+  @apply font-heading text-xl leading-snug font-semibold tracking-tight;
+}
+
+.th-heading-6 {
+  @apply font-heading text-lg leading-snug font-semibold tracking-tight;
+}
+
+.th-body-lg {
+  @apply font-sans text-lg leading-relaxed;
+}
+
+.th-body-md {
+  @apply font-sans text-base leading-relaxed;
+}
+
+.th-body-sm {
+  @apply font-sans text-sm leading-relaxed text-neutral-600;
+}
+
+.th-caption {
+  @apply font-sans text-xs leading-relaxed font-bold tracking-widest uppercase;
+}

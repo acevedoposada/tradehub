@@ -1,8 +1,121 @@
-<h1 class="font-heading text-4xl font-bold text-neutral">
-  Conecta con proveedores <span class="text-secondary">confiables</span> para tu
-  negocio
-</h1>
-<p class="text-neutral-700">
-  Encuentra proveedores verificados para abastecer tu empresa con los estándares
-  más altos del mercado B2B.
-</p>
+<section class="home__hero">
+  <div class="home__hero__dot-right"></div>
+  <div class="home__hero__dot-left"></div>
+  <div class="home__hero__content">
+    <h1 class="th-heading-1 mb-6">
+      Conecta con proveedores
+      <span class="text-secondary">confiables</span> para tu negocio
+    </h1>
+    <p class="mx-auto mb-12 max-w-2xl text-neutral-700">
+      Encuentra proveedores verificados para abastecer tu empresa con los
+      estándares más altos del mercado B2B.
+    </p>
+    <th-search-input></th-search-input>
+  </div>
+</section>
+
+<section class="home__categories">
+  <div class="container">
+    <div class="mb-12">
+      <span class="th-caption text-secondary">Mercado Global</span>
+      <div class="flex items-center justify-between">
+        <h2 class="th-heading-2 text-on-surface">Explora por Categorías</h2>
+        <a class="home__link" routerLink="/categories">
+          Ver todos las categorías
+          <th-icon name="arrow-narrow-right-dashed" class="text-2xl" />
+        </a>
+      </div>
+    </div>
+    <div class="home__categories__grid">
+      @for(category of categories(); track category.icon) {
+      <div class="group home__categories__item">
+        <div class="category__card">
+          <th-icon
+            [name]="category.icon"
+            class="text-3xl text-secondary group-hover:text-white"
+          />
+        </div>
+        <span class="category__name"> {{ category.name }} </span>
+      </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="home__providers">
+  <div class="home__providers__header">
+    <h2 class="home__providers__title">Proveedores Destacados</h2>
+    <a class="home__link" routerLink="/providers">
+      Ver todos los proveedores
+      <th-icon name="arrow-narrow-right-dashed" class="text-2xl" />
+    </a>
+  </div>
+  <div class="home__providers__grid">
+    <th-provider-card></th-provider-card>
+    <th-provider-card></th-provider-card>
+    <th-provider-card></th-provider-card>
+    <th-provider-card></th-provider-card>
+  </div>
+</section>
+
+<section class="home__trust">
+  <div class="home__trust__overlay">
+    <div class="home__trust__dot"></div>
+  </div>
+  <div class="relative z-10 container">
+    <div class="grid items-center gap-16 md:grid-cols-2">
+      <div>
+        <h2 class="mb-6 font-heading text-4xl font-extrabold">
+          Por qué las empresas eligen TradeHub?
+        </h2>
+        <div class="space-y-8">
+          @for(feature of trustFeatures(); track feature.icon) {
+          <div class="flex gap-4">
+            <div
+              class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-secondary"
+            >
+              <th-icon [name]="feature.icon" class="text-2xl" />
+            </div>
+            <div>
+              <h4 class="mb-2 font-heading text-xl font-bold">
+                {{ feature.title }}
+              </h4>
+              <p class="text-sm text-on-primary-container">
+                {{ feature.description }}
+              </p>
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+      <div class="group relative">
+        <div
+          class="absolute -inset-1 rounded-2xl bg-linear-to-r from-secondary to-tertiary-fixed opacity-25 blur transition duration-1000 group-hover:opacity-50 group-hover:duration-200"
+        ></div>
+        <div class="relative rounded-2xl border border-white/10 bg-primary p-8">
+          <p class="font-headline mb-8 text-2xl font-medium italic">
+            "TradeHub transformó nuestra cadena de suministro. Encontramos
+            proveedores en una semana que antes nos tomaba meses verificar."
+          </p>
+          <div class="flex items-center gap-4">
+            <div
+              class="h-12 w-12 overflow-hidden rounded-full bg-surface-container-high"
+            >
+              <img
+                alt="User Profile"
+                class="h-full w-full object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMOK6Ps3tOO4QHjAESXaz8BKZUT3xq0ovcCTk61IfX73WMjM3iilTLcI_jFFKCsKIQTp6jbTfCMLlCxagzRX1k-SH3xY2QxNTNhc3_3il4FWZKndWdFW1NyvkVPKo6rFrAEoNR1fTroKDLatC0j4qrdN2IQS19wrdu37J7lSY0ux7FCCZITMqPmeU-uWt94QsQx3681fzy9RDe_K2ssed9ajhldCqpNdy8F0BWG6foLqHTe5Ld-amLTioiVytxFZI_SSFUd-KAnI0"
+              />
+            </div>
+            <div>
+              <p class="font-bold">Alejandro Ruiz</p>
+              <p class="text-sm text-on-primary-container">
+                Director de Compras, LogiCorp
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
