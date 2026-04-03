@@ -1,2 +1,10 @@
-<h1 class="th-heading-1">List providers</h1>
-<p>{{ searchTerm() }}</p>
+<div class="flex h-full flex-col gap-8 lg:flex-row">
+  <aside class="w-full shrink-0 lg:w-72 xl:w-80">
+    <th-providers-filters />
+  </aside>
+  <div class="flex-1">
+    <div class="md:max-w-md">
+      <th-form-field />
+    </div>
+  </div>
+</div>

@@ -23,6 +23,12 @@
       "@features/*": [
         "app/features/*"
       ],
+      "@constants/*": [
+        "app/constants/*"
+      ],
+      "@store/*": [
+        "app/store/*"
+      ],
     }
   },
   "angularCompilerOptions": {

@@ -1,0 +1,7 @@
+@reference "../../../styles.css";
+
+@layer components {
+  input[type="text"] {
+    @apply w-full rounded-xl border border-outline-variant/10 bg-white py-3.5 pr-4 pl-12 text-sm shadow-sm transition-all focus:outline-none;
+  }
+}

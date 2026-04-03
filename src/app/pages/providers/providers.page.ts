@@ -1,6 +1,8 @@
 import { RouterLink } from "@angular/router";
 import { Component } from "@angular/core";
 
+import { categories as categoriesList } from "@constants/categories";
+
 import ThButtonComponent from "@components/button/button.component";
 import ThCardComponent from "@components/card/card.component";
 import ThIconComponent from "@components/icon/icon.component";
@@ -19,4 +21,6 @@ import ThChipComponent from "@components/chip/chip.component";
     RouterLink
   ]
 })
-export default class ProvidersPage {}
+export default class ProvidersPage {
+  categories = categoriesList
+}

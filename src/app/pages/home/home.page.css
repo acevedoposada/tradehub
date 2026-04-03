@@ -8,7 +8,7 @@
   @apply relative flex min-h-[52rem] flex-col items-center justify-center overflow-hidden px-6;
 
   & .home__hero__content {
-    @apply mx-auto max-w-4xl text-center;
+    @apply container text-center;
   }
 
   & .home__hero__dot-right {
