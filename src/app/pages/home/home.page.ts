@@ -5,6 +5,7 @@ import ThIconComponent from "@app/components/icon/icon.component";
 import { Router, RouterLink } from "@angular/router";
 import ThProviderCardComponent from "@app/features/providers/components/card/card.component";
 import SearchStore from "@app/store/search.store";
+import { Provider, providers } from "@app/constants/providers";
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,8 @@ import SearchStore from "@app/store/search.store";
 export default class HomePage {
   private router = inject(Router)
   private searchStore = inject(SearchStore)
+
+  providers = signal<Provider[]>([])
 
   categories = signal([
     { name: 'Tecnología', icon: 'device-desktop' },
@@ -41,6 +44,10 @@ export default class HomePage {
       description: 'Asistencia personalizada para resolver tus dudas y necesidades.'
     }
   ]
+
+  constructor() {
+    this.providers.set(providers.slice(0, 4))
+  }
   
   handleSearch(value: { searchTerm: string }) {
     this.searchStore.setTerm(value.searchTerm)

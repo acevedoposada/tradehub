@@ -1,53 +1,145 @@
 <div
-  class="group overflow-hidden rounded-2xl border border-outline-variant/10 bg-white transition-all duration-500 hover:shadow-xl"
+  class="group flex flex-col overflow-hidden rounded-2xl border border-outline-variant/10 bg-white transition-all duration-500 hover:shadow-xl hover:shadow-primary/5"
 >
   <div class="relative h-48 overflow-hidden">
     <img
-      alt="Supplier facility"
-      class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-      src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtYzI4FlS-xc7RKeRwCy9STw_f0DpZTpt2pCoRftNEFN0Ur-jHP6rOzxOd2_BFnf5yG7sHQma3cy_mMHWEHRZ9oxPov7JSn5PKEYnUV_tPV2OOoPZUK4cQoXTCCxrBYEsV30IHk9LKvm6QPZH_rpx1GV8Jk-XFKvk4so6el_qJrBTdecdpKuKG_M0kJNKbfC3AvpckTFY2YbKmCiNgy6iGDAFDQiVYhWw4bGGi0yXvVOnZ_LgWsMSGMLcGg1t_XKajLzNSalkRnms"
+      alt="Supplier cover"
+      class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+      [src]="cover()"
     />
-    <button
-      class="hover:text-error absolute top-4 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/80 text-on-surface backdrop-blur-md transition-colors"
-    >
-      <th-icon name="heart" class="text-xl" />
-    </button>
+
+    @if (variant() === "price-focus") {
+      <button
+        class="absolute top-4 right-4 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white/80 text-on-surface backdrop-blur-md transition-colors hover:text-red-400 hover:shadow-lg"
+        (click)="onFavoriteClick()"
+      >
+        <th-icon
+          [name]="favorite() ? 'heart-check' : 'heart'"
+          class="text-xl"
+        />
+      </button>
+    }
     @if (verified()) {
-      <div class="absolute bottom-4 left-4">
+      <div
+        class="absolute left-4"
+        [class.top-4]="variant() === 'content-focus'"
+        [class.bottom-4]="variant() === 'price-focus'"
+      >
         <span
-          class="rounded-full bg-tertiary-fixed py-1 pr-2 pl-3 text-[10px] font-bold tracking-wider text-on-tertiary-fixed uppercase"
+          class="flex items-center gap-1 rounded-full bg-tertiary-fixed py-1 pr-3 pl-2 text-[10px] font-bold tracking-wider text-on-tertiary-fixed uppercase shadow-sm"
         >
-          Verificado
-          <span class="inline-flex translate-y-[2px]">
-            <th-icon name="rosette-discount-check" class="text-sm" />
-          </span>
+          <th-icon name="rosette-discount-check" class="text-lg" /> Verificado
         </span>
       </div>
     }
   </div>
-  <div class="p-6">
-    <div class="mb-2 flex items-center gap-2">
-      <span class="th-caption text-secondary"> Tecnología </span>
-    </div>
-    <h3 class="th-heading-4 mb-1 text-on-surface">GlobalTech Solutions</h3>
-    <div class="mb-4 flex items-center gap-1 text-sm text-on-surface-variant">
-      <th-icon name="map-pin" class="text-sm" />
-      <span>San Francisco, CA</span>
-    </div>
+
+  <div class="flex flex-1 flex-col p-6">
     <div
-      class="flex items-center justify-between border-t border-outline-variant/10 py-4"
+      class="mb-2 flex items-start"
+      [class.justify-between]="!!categoryName()"
+      [class.justify-end]="!categoryName()"
     >
-      <div>
-        <p class="text-[10px] font-bold text-outline uppercase">Desde</p>
-        <p class="text-lg font-extrabold text-on-surface">
-          $1,200 <span class="text-xs font-medium text-outline">/ud</span>
-        </p>
+      @if (categoryName()) {
+        <span class="th-caption text-[10px] tracking-widest text-secondary">
+          {{ categoryName() }}
+        </span>
+      }
+
+      @if (variant() === "content-focus" && qualification()) {
+        <div
+          class="flex items-center gap-1 rounded-lg bg-surface-container-low px-2 py-1"
+        >
+          <th-icon name="star" class="text-sm text-amber-500" />
+          <span class="text-xs font-bold text-on-surface">{{
+            qualification()
+          }}</span>
+        </div>
+      }
+    </div>
+
+    <h3 class="th-heading-4 mb-2 line-clamp-1 leading-tight text-on-surface">
+      {{ name() }}
+    </h3>
+
+    @if (variant() === "price-focus") {
+      <div class="mb-4 flex items-center gap-1 text-sm text-on-surface-variant">
+        <th-icon name="map-pin" class="text-sm" />
+        <span> {{ location() }} </span>
       </div>
-      <div class="flex items-center gap-1">
-        <th-icon name="star" class="-mt-[2px] text-lg text-amber-400" />
-        <span class="font-bold text-on-surface">4.9</span>
+    } @else {
+      <p
+        class="mb-4 line-clamp-2 text-sm leading-relaxed text-on-surface-variant"
+      >
+        {{ description() }}
+      </p>
+    }
+
+    <div class="mt-auto">
+      @if (variant() === "price-focus") {
+        <div
+          class="flex items-center justify-between border-t border-outline-variant/10 py-4"
+          [class.justify-end]="!minProduct()"
+        >
+          @if (minProduct()) {
+            <div>
+              <p class="text-[10px] font-bold text-outline uppercase">Desde</p>
+              <p class="text-lg font-extrabold text-on-surface">
+                {{ minProduct()?.value | currency: "USD" : "symbol" : "1.0-0" }}
+                <span class="text-xs font-medium text-outline">
+                  /{{ minProduct()?.unit }}
+                </span>
+              </p>
+            </div>
+          }
+          @if (qualification()) {
+            <div class="flex items-center gap-1">
+              <th-icon name="star" class="-mt-[2px] text-lg text-amber-400" />
+              <span class="font-bold text-on-surface">
+                {{ qualification() }}
+              </span>
+            </div>
+          }
+        </div>
+      } @else {
+        <div
+          class="mb-4 flex items-center justify-between text-xs font-medium text-outline"
+        >
+          <div class="flex items-center gap-1">
+            <th-icon name="map-pin" class="text-sm" /> {{ location() }}
+          </div>
+          <p
+            class="flex items-center gap-0.5 tracking-wide text-outline-variant"
+          >
+            <span class="font-bold text-secondary">
+              {{ renderSigns().active }}
+            </span>
+            {{ renderSigns().inactive }}
+          </p>
+        </div>
+      }
+      <div class="flex gap-2">
+        <a
+          [th-btn]="detailBtnOpts().variant"
+          [th-btn-color]="detailBtnOpts().color"
+          [th-btn-full-width]="true"
+          [routerLink]="['/providers', id()]"
+        >
+          Ver detalle
+        </a>
+        @if (variant() === "content-focus") {
+          <button
+            th-btn="tonal"
+            class="w-12 min-w-12 p-3 [&>span]:flex [&>span]:items-center"
+            (click)="onFavoriteClick()"
+          >
+            <th-icon
+              [name]="favorite() ? 'heart-check' : 'heart'"
+              class="text-xl"
+            />
+          </button>
+        }
       </div>
     </div>
-    <button th-btn="tonal" [th-btn-full-width]="true">Ver detalle</button>
   </div>
 </div>

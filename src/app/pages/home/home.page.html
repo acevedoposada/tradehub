@@ -55,10 +55,21 @@
     </a>
   </div>
   <div class="home__providers__grid">
-    <th-provider-card></th-provider-card>
-    <th-provider-card></th-provider-card>
-    <th-provider-card></th-provider-card>
-    <th-provider-card></th-provider-card>
+    @for (provider of providers(); track provider.id) {
+    <th-provider-card
+      variant="price-focus"
+      [id]="provider.id"
+      [name]="provider.name"
+      [category]="provider.category"
+      [cover]="provider.cover"
+      [verified]="provider.verified"
+      [costRate]="provider.costRate"
+      [favorite]="provider.favorite"
+      [qualification]="provider.qualification"
+      [location]="provider.location"
+      [minProduct]="provider.minProduct"
+    />
+    }
   </div>
 </section>
 

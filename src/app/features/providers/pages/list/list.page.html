@@ -2,7 +2,7 @@
   <aside class="w-full shrink-0 lg:w-72 xl:w-80">
     <th-providers-filters />
   </aside>
-  <div class="flex-1">
+  <div class="flex flex-1 flex-col gap-8">
     <div class="md:max-w-md">
       <th-form-field icon="search">
         <input
@@ -12,6 +12,23 @@
           [formControl]="searchField"
         />
       </th-form-field>
+    </div>
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+      @for(provider of providersList(); track provider.id) {
+      <th-provider-card
+        [id]="provider.id"
+        [name]="provider.name"
+        [description]="provider.description"
+        [category]="provider.category"
+        [cover]="provider.cover"
+        [verified]="provider.verified"
+        [costRate]="provider.costRate"
+        [favorite]="provider.favorite"
+        [qualification]="provider.qualification"
+        [location]="provider.location"
+        (favoriteClick)="onFavoriteClick(provider.id)"
+      />
+      }
     </div>
   </div>
 </div>

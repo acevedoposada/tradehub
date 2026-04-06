@@ -19,6 +19,6 @@ import ThFormFieldModule from "@components/form-field/form-field.module";
 })
 export default class ThFiltersComponent {
   filtersForm = new FormGroup({
-    qualification: new FormControl('4.5')
+    qualification: new FormControl('')
   })
 }
