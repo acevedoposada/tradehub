@@ -24,4 +24,8 @@ export default class ThFiltersComponent {
   filtersForm = new FormGroup({
     qualification: new FormControl('')
   })
+
+  cleanForm() {
+    this.filtersForm.reset()
+  }
 }

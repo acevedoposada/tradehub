@@ -61,6 +61,13 @@
         </th-radio>
       </div>
     </div>
-    <button th-btn="tonal" [th-btn-full-width]="true">Limpiar Filtros</button>
+    <button
+      th-btn="tonal"
+      [th-btn-full-width]="true"
+      type="button"
+      (click)="cleanForm()"
+    >
+      Limpiar Filtros
+    </button>
   </th-card>
 </form>
