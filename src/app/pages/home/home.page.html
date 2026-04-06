@@ -32,7 +32,10 @@
     </div>
     <div class="home__categories__grid">
       @for(category of categories(); track category.icon) {
-      <div class="group home__categories__item">
+      <button
+        class="group home__categories__item"
+        (click)="onCategoryClick(category.id)"
+      >
         <div class="category__card">
           <th-icon
             [name]="category.icon"
@@ -40,7 +43,7 @@
           />
         </div>
         <span class="category__name"> {{ category.name }} </span>
-      </div>
+      </button>
       }
     </div>
   </div>

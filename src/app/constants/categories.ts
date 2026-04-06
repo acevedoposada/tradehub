@@ -8,12 +8,12 @@ export const categories = [
     tags: ["Servidores", "Ciberseguridad", "IA"]
   },
   {
-    id: "construction",
-    name: "Construcción",
-    description: "Maquinaria pesada, materiales estructurales y servicios de ingeniería civil.",
-    icon: "geometry",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCgn4Bd_3NEkiEqas_ivsyrdC9QcuRVV5phFg_YpX_jA5bbJdrNDNH1w6EtQG65VQpW_3O9zZrUXx0OlwTcZ8gvGSr_SABTcLelGjwelGnRnM3kL_Heu5zxqGlLiSvxwzB7PkCZkEMVTV2YHjv3Yct5majF4eI_cuDy4MRfcK7MoAPUBPyTC-mNLSX8PIIq9WOS4WXv1fAWn2vUxLsfkqhnmLo0OUuhvPSGoglFqhN0nZT34VY67Xi9meOk9yeCmuUKVf9h-zGpy44",
-    tags: ["Acero", "Equipos", "Diseño"]
+    id: "clothes",
+    name: "Textiles",
+    description: "Tejidos técnicos, indumentaria industrial y maquinaria textil avanzada.",
+    icon: "hanger",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCJo_pWEZq3Kz0XTDlwQ32Eg788OKRo2ws2fiGk2WWpC3MfF4e7OPlLvk3HEdWh1Mt6hwrDjJ-eLwWfsLo4tluXicYSqG-n9M6QAnEEvsz85SZiJhZjj7z6gRuJHdWtRMUWx6yvNmi-IfsM2ZWXDGQNqcc_nJFc43GsnqO0W_YQbgZZ8o3NINzAFI6oSlbmtzvqPHNXd49l5vtfvXKDVyAdEMKZknB8YCJTHBDMwa8i3DdG1porF-xNZuNW0a5qP1LAW1CdlaEglYk",
+    tags: ["Algodón", "Uniformes", "Maquinaria"]
   },
   {
     id: "foods",
@@ -40,20 +40,20 @@ export const categories = [
     tags: ["Ads", "SEO B2B", "Eventos"]
   },
   {
+    id: "construction",
+    name: "Construcción",
+    description: "Maquinaria pesada, materiales estructurales y servicios de ingeniería civil.",
+    icon: "geometry",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCgn4Bd_3NEkiEqas_ivsyrdC9QcuRVV5phFg_YpX_jA5bbJdrNDNH1w6EtQG65VQpW_3O9zZrUXx0OlwTcZ8gvGSr_SABTcLelGjwelGnRnM3kL_Heu5zxqGlLiSvxwzB7PkCZkEMVTV2YHjv3Yct5majF4eI_cuDy4MRfcK7MoAPUBPyTC-mNLSX8PIIq9WOS4WXv1fAWn2vUxLsfkqhnmLo0OUuhvPSGoglFqhN0nZT34VY67Xi9meOk9yeCmuUKVf9h-zGpy44",
+    tags: ["Acero", "Equipos", "Diseño"]
+  },
+  {
     id: "health",
     name: "Salud",
     description: "Equipamiento médico, suministros hospitalarios y farmacología mayorista.",
     icon: "first-aid-kit",
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAypCksffV6MubQQDV5FCUcrGIKPrvlYcJcfHIvT-GZalYGqCGw8XFAR2Cmsz0FRrtARttD1ETu_e-vTU7pTo7r4Z2XQn0EFCinIGEzTuYjIsMEqU1U7OiZS2Rz_JJwtVAThvS178Gd0VpXwL-aCbOpta3xMACkDkbQIqSIcEliDtSIG8SB1mY1bsfmF4gd3CE7ZB4C6waT-MFWuU5EH34A0u4KVyxim62v2deCgNMhi5nSybNl2EvlbsonZtoHec3jJ2ZB9HzbgOo",
     tags: ["Diagnóstico", "Insumos", "Lab"]
-  },
-  {
-    id: "clothes",
-    name: "Textiles",
-    description: "Tejidos técnicos, indumentaria industrial y maquinaria textil avanzada.",
-    icon: "hanger",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCJo_pWEZq3Kz0XTDlwQ32Eg788OKRo2ws2fiGk2WWpC3MfF4e7OPlLvk3HEdWh1Mt6hwrDjJ-eLwWfsLo4tluXicYSqG-n9M6QAnEEvsz85SZiJhZjj7z6gRuJHdWtRMUWx6yvNmi-IfsM2ZWXDGQNqcc_nJFc43GsnqO0W_YQbgZZ8o3NINzAFI6oSlbmtzvqPHNXd49l5vtfvXKDVyAdEMKZknB8YCJTHBDMwa8i3DdG1porF-xNZuNW0a5qP1LAW1CdlaEglYk",
-    tags: ["Algodón", "Uniformes", "Maquinaria"]
   },
   {
     id: "energy",
@@ -64,3 +64,12 @@ export const categories = [
     tags: ["Solar", "Baterías", "Gas"]
   },
 ]
+
+export interface Category {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  image: string;
+  tags: string[];
+}

@@ -14,7 +14,7 @@
       </th-form-field>
     </div>
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-      @for(provider of providersList(); track provider.id) {
+      @for(provider of filteredProviders(); track provider.id) {
       <th-provider-card
         [id]="provider.id"
         [name]="provider.name"

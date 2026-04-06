@@ -6,9 +6,12 @@
         Categoría
       </label>
       <div class="space-y-2">
-        <th-checkbox> Construcción </th-checkbox>
-        <th-checkbox> Logística </th-checkbox>
-        <th-checkbox> Tecnología </th-checkbox>
+        @for (
+          category of providerService.availableCategories();
+          track category.id
+        ) {
+          <th-checkbox> {{ category.name }} </th-checkbox>
+        }
       </div>
     </div>
     <div class="mb-8">
