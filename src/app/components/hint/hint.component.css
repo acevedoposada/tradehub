@@ -1,0 +1,9 @@
+@reference "../../../styles.css";
+
+.th-hint {
+  @apply mt-1 block text-xs text-neutral-400;
+
+  &.th-hint--end {
+    @apply text-right;
+  }
+}

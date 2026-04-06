@@ -5,12 +5,13 @@ import ThFiltersComponent from "@features/providers/components/filters/filters.c
 import ThFormFieldComponent from "@app/components/form-field/form-field.component";
 
 import SearchStore from "@store/search.store";
+import ThFormFieldModule from "@app/components/form-field/form-field.module";
 
 @Component({
   selector: "th-list-providers-page",
   templateUrl: "./list.page.html",
   styleUrl: "./list.page.css",
-  imports: [ThFiltersComponent, ThFormFieldComponent, ReactiveFormsModule]
+  imports: [ThFiltersComponent, ThFormFieldModule, ReactiveFormsModule]
 })
 export default class ListProvidersPage {
   searchStore = inject(SearchStore)

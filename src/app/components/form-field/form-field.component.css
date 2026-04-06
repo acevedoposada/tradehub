@@ -1,7 +1,29 @@
-@reference "../../../styles.css";
+@reference '../../../styles.css';
 
 @layer components {
-  input[type="text"] {
-    @apply w-full rounded-xl border border-outline-variant/10 bg-white py-3.5 pr-4 pl-12 text-sm shadow-sm transition-all focus:outline-none;
+  :host {
+    ::ng-deep .th-input {
+      @apply w-full rounded-xl border border-outline-variant/10 bg-white px-4 py-3.5 text-sm shadow-xs transition-all focus:outline-none active:outline-none;
+    }
+
+    & .th-form-field__icon {
+      @apply pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-lg text-outline-variant/50 group-focus-within:text-secondary/70;
+    }
+
+    &.has-icon {
+      ::ng-deep .th-input {
+        @apply pl-12;
+      }
+    }
+
+    &.th--tonal {
+      ::ng-deep .th-input {
+        @apply rounded-lg border-none bg-surface-container-low text-sm shadow-none;
+      }
+
+      & .th-form-field__icon {
+        @apply text-primary-600;
+      }
+    }
   }
 }

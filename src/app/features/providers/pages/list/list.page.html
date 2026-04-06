@@ -4,7 +4,14 @@
   </aside>
   <div class="flex-1">
     <div class="md:max-w-md">
-      <th-form-field />
+      <th-form-field icon="search">
+        <input
+          placeholder="Buscar proveedores, servicios o productos..."
+          type="text"
+          th-input
+          [formControl]="searchField"
+        />
+      </th-form-field>
     </div>
   </div>
 </div>

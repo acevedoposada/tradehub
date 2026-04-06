@@ -1,0 +1,15 @@
+<label class="th-radio__wrapper" [class.disabled]="disabled()">
+  <input
+    #radioInput
+    type="radio"
+    class="th-radio__input"
+    [name]="name()"
+    [value]="value()"
+    [disabled]="disabled()"
+    (change)="onSelect($event)"
+  />
+
+  <span class="th-radio-label">
+    <ng-content></ng-content>
+  </span>
+</label>

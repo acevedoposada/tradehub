@@ -1,0 +1,60 @@
+@reference "../../../styles.css";
+
+:host {
+  @apply block;
+}
+
+.th-radio__wrapper {
+  @apply relative inline-flex cursor-pointer items-center gap-3 select-none;
+
+  &.is-disabled {
+    @apply cursor-not-allowed opacity-60;
+  }
+}
+
+.th-radio__input {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid #cbd5e1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
+  background-color: white;
+
+  &:checked {
+    @apply accent-primary;
+  }
+}
+
+.th-radio-visual.is-checked {
+  border-color: #0f172a;
+}
+
+.th-radio-dot {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 50%;
+  background-color: #0f172a;
+  animation: popIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.sr-only:focus-visible + .th-radio-visual {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.th-radio-label {
+  font-size: 0.875rem;
+  color: #334155;
+}

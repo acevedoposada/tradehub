@@ -1,26 +1,63 @@
-<div class="sticky top-28 space-y-8">
+<form [formGroup]="filtersForm" class="sticky top-28 space-y-8">
   <th-card class="p-6">
     <h3 class="th-heading-6 mb-6 text-on-surface">Filtros</h3>
     <div class="mb-8">
-      <label class="th-caption mb-4 tracking-wider text-outline">
+      <label class="th-caption mb-4 block tracking-wider text-outline">
         Categoría
       </label>
+      <div class="space-y-2">
+        <th-checkbox> Construcción </th-checkbox>
+        <th-checkbox> Logística </th-checkbox>
+        <th-checkbox> Tecnología </th-checkbox>
+      </div>
     </div>
     <div class="mb-8">
-      <label class="th-caption mb-4 tracking-wider text-outline">
+      <label class="th-caption mb-4 block tracking-wider text-outline">
         Ubicación
       </label>
+      <div>
+        <th-form-field icon="map-pin" appeareance="tonal">
+          <input th-input placeholder="Ciudad o región" />
+        </th-form-field>
+      </div>
     </div>
     <div class="mb-8">
-      <label class="th-caption mb-4 tracking-wider text-outline">
+      <label class="th-caption mb-4 block tracking-wider text-outline">
         Rango de Precio
       </label>
+      <div class="flex items-center gap-2">
+        <th-form-field appeareance="tonal">
+          <input th-input placeholder="Min" />
+        </th-form-field>
+        <span class="text-outline">—</span>
+        <th-form-field appeareance="tonal">
+          <input th-input placeholder="Max" />
+        </th-form-field>
+      </div>
     </div>
     <div class="mb-8">
-      <label class="th-caption mb-4 tracking-wider text-outline">
+      <label class="th-caption mb-4 block tracking-wider text-outline">
         Calificación
       </label>
+      <div class="space-y-1">
+        <th-radio
+          value="4.5"
+          name="qualification"
+          formControlName="qualification"
+        >
+          <th-icon name="star" class="text-amber-500" />
+          4.5+ estrellas
+        </th-radio>
+        <th-radio
+          value="4"
+          name="qualification"
+          formControlName="qualification"
+        >
+          <th-icon name="star" class="text-amber-500" />
+          4.0+ estrellas
+        </th-radio>
+      </div>
     </div>
     <button th-btn="tonal" [th-btn-full-width]="true">Limpiar Filtros</button>
   </th-card>
-</div>
+</form>

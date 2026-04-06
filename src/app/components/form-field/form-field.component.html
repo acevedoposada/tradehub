@@ -1,11 +1,6 @@
-<div class="group relative w-full">
-  <th-icon
-    class="absolute top-3.5 left-4 text-xl text-outline transition-colors group-focus-within:text-secondary"
-    name="search"
-  />
-  <input
-    id="search"
-    placeholder="Buscar proveedores, servicios o productos..."
-    type="text"
-  />
+<div class="group relative w-full md:max-w-md">
+  @if (icon()) {
+    <th-icon [name]="this.icon()!" class="th-form-field__icon" />
+  }
+  <ng-content select="[th-input]" />
 </div>

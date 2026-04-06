@@ -1,0 +1,20 @@
+<label class="th-checkbox-wrapper" [class.is-disabled]="disabled()">
+  <input
+    type="checkbox"
+    class="sr-only"
+    [checked]="checked()"
+    [disabled]="disabled()"
+    (change)="onToggle($event)"
+    (blur)="onTouchedCb()"
+  />
+
+  <div class="th-checkbox-visual" [class.is-checked]="checked()">
+    @if (checked()) {
+      <th-icon name="check" class="text-white" />
+    }
+  </div>
+
+  <span class="th-checkbox-label">
+    <ng-content />
+  </span>
+</label>

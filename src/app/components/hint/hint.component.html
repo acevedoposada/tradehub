@@ -1,0 +1,5 @@
+@if (shouldShow()) {
+  <span class="th-hint" [class.th-hint--end]="align() === 'end'">
+    <ng-content />
+  </span>
+}
