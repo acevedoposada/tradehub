@@ -75,42 +75,44 @@
   </div>
   <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
     @for (category of categories; track category.id) {
-    <th-card
-      class="group overflow-hidden border border-outline-variant/5 transition-all duration-500 hover:shadow-2xl"
-    >
-      <div th-card-header class="relative h-48 overflow-hidden">
-        <img
-          class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-          [alt]="category.name"
-          [src]="category.image"
-        />
-        <div
-          class="absolute inset-0 bg-linear-to-t from-primary/80 to-transparent"
-        ></div>
-        <div class="absolute bottom-4 left-4 flex items-center gap-3">
+    <button class="cursor-pointer" (click)="goToList(category.id)">
+      <th-card
+        class="group h-full overflow-hidden border border-outline-variant/5 transition-all duration-500 hover:shadow-2xl"
+      >
+        <div th-card-header class="relative h-48 overflow-hidden">
+          <img
+            class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+            [alt]="category.name"
+            [src]="category.image"
+          />
           <div
-            class="flex h-10 w-10 items-center justify-center rounded-lg bg-white/20 text-white backdrop-blur-md"
-          >
-            <th-icon [name]="category.icon" class="text-2xl" />
-          </div>
-          <h3 class="font-heading text-lg font-bold text-white">
-            {{category.name}}
-          </h3>
-        </div>
-      </div>
-      <div th-card-content class="p-6">
-        <p class="mb-6 line-clamp-2 text-sm text-on-surface-variant">
-          {{category.description}}
-        </p>
-        <div class="space-y-3">
-          <div class="flex flex-wrap gap-2">
-            @for(tag of category.tags; track tag) {
-            <th-chip [square]="true"> {{tag}} </th-chip>
-            }
+            class="absolute inset-0 bg-linear-to-t from-primary/80 to-transparent"
+          ></div>
+          <div class="absolute bottom-4 left-4 flex items-center gap-3">
+            <div
+              class="flex h-10 w-10 items-center justify-center rounded-lg bg-white/20 text-white backdrop-blur-md"
+            >
+              <th-icon [name]="category.icon" class="text-2xl" />
+            </div>
+            <h3 class="font-heading text-lg font-bold text-white">
+              {{category.name}}
+            </h3>
           </div>
         </div>
-      </div>
-    </th-card>
+        <div th-card-content class="p-6">
+          <p class="mb-6 line-clamp-2 text-sm text-on-surface-variant">
+            {{category.description}}
+          </p>
+          <div class="space-y-3">
+            <div class="flex flex-wrap gap-2">
+              @for(tag of category.tags; track tag) {
+              <th-chip [square]="true"> {{tag}} </th-chip>
+              }
+            </div>
+          </div>
+        </div>
+      </th-card>
+    </button>
     }
   </div>
 </section>
