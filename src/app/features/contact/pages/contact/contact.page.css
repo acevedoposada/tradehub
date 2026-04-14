@@ -1,0 +1,9 @@
+@reference "../../../../../styles.css";
+
+:host {
+  @apply relative flex h-full grow items-center justify-center overflow-hidden px-6 pt-22 pb-20;
+}
+
+.contact {
+  @apply container grid w-full grid-cols-1 gap-0 overflow-hidden rounded-xl bg-white p-0! shadow-2xl lg:grid-cols-12;
+}
