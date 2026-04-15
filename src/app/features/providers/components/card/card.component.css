@@ -1,1 +1,5 @@
 @reference "../../../../../styles.css";
+
+.btn-favorite--liked {
+  @apply bg-pink-200 text-pink-500;
+}

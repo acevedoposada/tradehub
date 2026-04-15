@@ -25,7 +25,7 @@ export const providers: Provider[] = [
     category: 'logistics',
     verified: false,
     qualification: 4.7,
-    favorite: true,
+    favorite: false,
     minProduct: {
       value: 500,
       unit: 'trayecto'
@@ -105,7 +105,7 @@ export const providers: Provider[] = [
     category: 'technology',
     verified: true,
     qualification: 4.9,
-    favorite: true,
+    favorite: false,
     minProduct: {
       value: 150,
       unit: 'mes'
@@ -169,7 +169,7 @@ export const providers: Provider[] = [
     category: 'marketing',
     verified: false,
     qualification: 4.6,
-    favorite: true,
+    favorite: false,
     minProduct: {
       value: 950,
       unit: 'campaña'

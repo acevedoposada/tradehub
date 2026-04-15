@@ -11,6 +11,7 @@
     @if (variant() === "price-focus") {
       <button
         class="absolute top-4 right-4 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white/80 text-on-surface backdrop-blur-md transition-colors hover:text-red-400 hover:shadow-lg"
+        [class.btn-favorite--liked]="favorite()"
         (click)="onFavoriteClick()"
       >
         <th-icon
@@ -131,6 +132,7 @@
           <button
             th-btn="tonal"
             class="w-12 min-w-12 p-3 [&>span]:flex [&>span]:items-center"
+            [class.btn-favorite--liked]="favorite()"
             (click)="onFavoriteClick()"
           >
             <th-icon

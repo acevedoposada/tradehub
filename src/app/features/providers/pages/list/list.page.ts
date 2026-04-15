@@ -43,5 +43,6 @@ export default class ListProvidersPage {
 
   onFavoriteClick(id: number) {
     console.log('Clicked: ' + id)
+    this.providersService.setProviderFavorite(id)
   }
 }

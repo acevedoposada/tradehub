@@ -71,16 +71,16 @@
         <div class="space-y-1.5">
           <label
             class="block text-xs font-semibold tracking-wider text-on-surface-variant uppercase"
-            style=""
-            >Nombre</label
           >
+            Nombre
+          </label>
           <input
             class="focus:bg-surface-container-lowest w-full rounded-lg border-none bg-surface-container-low px-4 py-3 text-sm transition-all focus:ring-2 focus:ring-secondary"
             placeholder="Ej. Alejandro Torres"
             required=""
             type="text"
           />
-          <p class="text-error hidden text-[10px] italic" style="">
+          <p class="text-error hidden text-[10px] italic">
             * Este campo es obligatorio
           </p>
         </div>
@@ -126,12 +126,10 @@
             <option value="3">Tecnologías de Manufactura Avanzada</option>
             <option value="4">Construcciones e Infraestructura Elite</option>
           </select>
-          <span
-            class="material-symbols-outlined pointer-events-none absolute top-1/2 right-4 -translate-y-1/2 text-on-surface-variant"
-            data-icon="expand_more"
-            style=""
-            >expand_more</span
-          >
+          <th-icon
+            name="chevron-down"
+            class="pointer-events-none absolute top-1/2 right-4 -translate-y-1/2 text-on-surface-variant"
+          />
         </div>
       </div>
       <div class="space-y-1.5">
@@ -147,9 +145,8 @@
         ></textarea>
       </div>
       <div class="pt-4">
-        <button th-btn [th-btn-full-width]="true" type="submit">
+        <button th-btn [th-btn-full-width]="true" type="submit" icon="send">
           Enviar solicitud
-          <th-icon name="send" name="text-lg" />
         </button>
         <p
           class="font-body mt-4 text-center text-[10px] text-on-surface-variant"
