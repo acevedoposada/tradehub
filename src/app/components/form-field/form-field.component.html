@@ -1,6 +1,23 @@
-<div class="group relative w-full md:max-w-md">
+@if (label()) {
+  <label
+    class="block text-xs font-semibold tracking-wider text-on-surface-variant uppercase"
+  >
+    {{ label() }}
+    @if (isRequired()) {
+      <span class="text-red-500">*</span>
+    }
+  </label>
+}
+<div class="group relative w-full">
   @if (icon()) {
     <th-icon [name]="this.icon()!" class="th-form-field__icon" />
   }
   <ng-content select="[th-input]" />
+  @if (isSelect()) {
+    <th-icon
+      name="chevron-down"
+      class="pointer-events-none absolute top-1/2 right-4 -translate-y-1/2 text-on-surface-variant"
+    />
+  }
 </div>
+<ng-content select="th-error" />

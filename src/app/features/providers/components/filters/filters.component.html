@@ -5,12 +5,11 @@
       <label class="th-caption mb-4 block tracking-wider text-outline">
         Categoría
       </label>
-      <div class="space-y-2">
-        @for (
-          category of providerService.availableCategories();
-          track category.id
-        ) {
-          <th-checkbox> {{ category.name }} </th-checkbox>
+      <div class="space-y-2" formArrayName="categories">
+        @for (category of providerService.availableCategories(); track $index) {
+          <th-checkbox [formControlName]="$index">
+            {{ category.name }}
+          </th-checkbox>
         }
       </div>
     </div>
@@ -20,7 +19,11 @@
       </label>
       <div>
         <th-form-field icon="map-pin" appeareance="tonal">
-          <input th-input placeholder="Ciudad o región" />
+          <input
+            th-input
+            placeholder="Ciudad o región"
+            formControlName="location"
+          />
         </th-form-field>
       </div>
     </div>
@@ -30,11 +33,25 @@
       </label>
       <div class="flex items-center gap-2">
         <th-form-field appeareance="tonal">
-          <input th-input placeholder="Min" />
+          <input
+            th-input
+            placeholder="Min"
+            type="number"
+            class="appearance-none"
+            min="0"
+            formControlName="min"
+          />
         </th-form-field>
         <span class="text-outline">—</span>
         <th-form-field appeareance="tonal">
-          <input th-input placeholder="Max" />
+          <input
+            th-input
+            placeholder="Max"
+            type="number"
+            class="appearance-none"
+            min="0"
+            formControlName="max"
+          />
         </th-form-field>
       </div>
     </div>

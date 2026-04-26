@@ -8,8 +8,10 @@
         <input
           placeholder="Buscar proveedores, servicios o productos..."
           type="text"
+          #searchField
           th-input
-          [formControl]="searchField"
+          [value]="searchQuery()"
+          (input)="searchQuery.set(searchField.value)"
         />
       </th-form-field>
     </div>

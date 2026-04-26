@@ -5,6 +5,10 @@
     @apply flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-secondary px-6 py-3 font-semibold text-white transition-all hover:bg-secondary-800 md:w-auto;
 
     --th-icon-size: 1.25em;
+
+    &:disabled {
+      @apply cursor-default opacity-50;
+    }
   }
 
   .th-btn-icon {

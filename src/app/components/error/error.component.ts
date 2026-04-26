@@ -1,4 +1,7 @@
 import { Component, computed, inject, input } from "@angular/core";
+import { toObservable, toSignal } from "@angular/core/rxjs-interop";
+import { EMPTY, switchMap } from "rxjs";
+
 import ThFormFieldComponent from "../form-field/form-field.component";
 
 @Component({
@@ -11,14 +14,23 @@ export default class ThErrorComponent {
 
   errorName = input<string>("", { alias: 'error-name' })
 
-  shouldShow = computed(() => {
-    const control = this.parent.control()
-    const isTouched = !!(control?.invalid && (control?.touched || control?.dirty));
+  private statusSignal = toSignal(toObservable(this.parent.control).pipe(
+    switchMap(control => control ? control.events : EMPTY)
+  ))
 
-    if (!isTouched) return false;
+  shouldShow = computed(() => {
+    this.statusSignal()
+
+    const control = this.parent.control()
+    if (!control) return false;
+
+    const isInvalid = control.invalid;
+    const isTouchedOrDirty = control.touched || control.dirty
+
+    if (!(isInvalid && isTouchedOrDirty)) return false;
 
     return this.errorName() 
-      ? control?.hasError(this.errorName()) 
+      ? control.hasError(this.errorName()) 
       : true;
   })
 }

@@ -1,12 +1,17 @@
+<div class="mb-6">
+  <a
+    routerLink="/providers/list"
+    class="flex items-center gap-2 text-secondary transition-all hover:gap-3"
+  >
+    <th-icon name="chevron-left" class="text-2xl" /> Ir a la lista
+  </a>
+</div>
+@if (provider(); as provider) {
 <div class="grid grid-cols-1 gap-12 lg:grid-cols-12">
   <div class="space-y-12 lg:col-span-8">
     <section class="relative overflow-hidden rounded-xl bg-white">
       <div class="relative h-64 w-full">
-        <img
-          class="h-full w-full object-cover"
-          data-alt="Modern industrial logistics warehouse interior with high ceilings, automated shelves, and bright professional lighting"
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDE02i1fZ_vSRXBraJhF5rZqvlvzrg_NmM5_Lm218x1nwYFuMJ0AM4xRJFmZEazkWTu9sDFaArZ_Ybdm2BIf2odDh_ZFMdSqcJmMUMt164sakEciG_Gib2EGOjVO5fwskRpO5ANXetVS-8uH5_WAI4K0gFfiHKHyajWxsk4TkeAT4Q5K8_6BdL0MSSCFbMFJQdnCajuLhT5CtdnEsFAiVowKnhtmRgBqQ-UB_VyVeIm5gxzA_8WBHLlBMGl_ul8knG3ZUxAz97SdeI"
-        />
+        <img class="h-full w-full object-cover" [src]="provider.cover" />
         <div
           class="absolute inset-0 bg-linear-to-t from-primary/60 to-transparent"
         ></div>
@@ -15,8 +20,8 @@
         <div class="flex flex-col items-end gap-6 md:flex-row">
           <div class="h-32 w-32 rounded-xl bg-white p-2 shadow-xl">
             <img
-              class="h-full w-full rounded-lg object-contain"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjC9DrhRIzDwD9aVSCuvw9PDWyS8Xd9zVlK4d_B4vQX06x8GHofkANlUwTHyHH9KhVf906Z6Sj5D5HGZaUIov05Ni7dm_rPdaJTu2upurCaNRcK34LSF_7IqFCFOrgQ27zsGe0_9gl0_aGmHzaAT8kZ1DV644cO0WAMcq0F30X39mEOMa48kpWx4EPo_hvdsmT1Xf_F9rx8Hsqq0jo0ZsCzKK5KmFYWmh3Ov2P7H2aJ9ct1zcGfncl4Squ6F4y2TIJIcI9dNxiTYo"
+              class="h-full w-full rounded-lg object-cover"
+              [src]="provider.logo"
             />
           </div>
           <div class="mb-2 flex-1">
@@ -26,30 +31,38 @@
               <h1
                 class="font-heading text-4xl font-extrabold tracking-tight text-white"
               >
-                Global Logistics Pro S.A.
+                {{ provider.name }}
               </h1>
+              @if (provider.verified) {
               <span
                 class="flex items-center gap-1 rounded-full bg-tertiary-fixed px-2 py-1 text-[10px] font-bold text-tertiary-900"
               >
                 <th-icon name="rosette-discount-check" class="text-sm" />
                 Verificado
               </span>
+              }
             </div>
             <div
               class="flex flex-wrap items-center gap-6 text-sm font-medium text-on-surface-variant"
             >
               <div class="flex items-center gap-1">
                 <th-icon name="star" class="text-lg text-amber-500" />
-                <span class="text-on-surface">4.9</span>
-                <span class="opacity-60">(124 reseñas)</span>
+                <span class="text-on-surface">
+                  {{ provider.qualification }}
+                </span>
+                <span class="opacity-60">
+                  ({{ provider.reviews.length | i18nPlural: reviewPluralMapping
+                  }})
+                </span>
               </div>
               <div class="flex items-center gap-1">
                 <th-icon name="map-pin" class="primary" />
-                Barcelona, España
+                {{ provider.location }}
               </div>
               <div class="flex items-center gap-1">
                 <th-icon name="history" class="primary" />
-                15 años de experiencia
+                {{ provider.yearsOfExperience | i18nPlural:
+                experiencePluralMapping}} de experiencia
               </div>
             </div>
           </div>
@@ -61,19 +74,7 @@
       <div
         class="prose prose-slate max-w-none leading-relaxed text-on-surface-variant"
       >
-        <p class="">
-          Global Logistics Pro S.A. es líder en soluciones integrales de cadena
-          de suministro para el sector B2B en Europa. Especializados en
-          manufactura avanzada y distribución a gran escala, ofrecemos una
-          infraestructura tecnológica de vanguardia que garantiza la
-          trazabilidad total de sus activos.
-        </p>
-        <p class="">
-          Nuestra capacidad operativa permite gestionar desde pedidos de volumen
-          medio hasta contratos corporativos transnacionales, manteniendo
-          siempre los más altos estándares de calidad ISO 9001 y certificaciones
-          de sostenibilidad ambiental.
-        </p>
+        {{ provider.description }}
       </div>
     </section>
     <section class="space-y-6">
@@ -81,53 +82,27 @@
         Productos y Servicios Destacados
       </h2>
       <div class="grid h-auto grid-cols-1 gap-4 md:h-[450px] md:grid-cols-3">
+        @for (highlight of provider.highlights; track highlight.title; let i =
+        $index) {
         <div
-          class="group relative overflow-hidden rounded-xl bg-surface-container-low md:col-span-2 md:row-span-2"
+          class="group relative overflow-hidden rounded-xl bg-surface-container-low"
+          [class.md:col-span-2]="i === 0"
+          [class.md:row-span-2]="i === 0"
         >
           <img
             class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-            data-alt="Large scale industrial automated storage system with robotic arms and orange machinery in a clean facility"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZM8b0-ywJ76brDn0-1saiNcUPhu5x_-iY_V5MEb9wPaETt1fiSnyrYjZ2hxx_5fsGTTXCksriR4Z5LVFH_s66oHF70FQgqlczOZ-idyFYA9Eb_thgqMOi2qs65nMJ8kRtSfren5qbeTee8EucNikoYMdS5Jg6_7iJ1ABXMvQW7MCPchiWJZZq4W_UMsZX4D5SVSHvgPYWS7yhsY9rUzYGcAL97GxHFbHfA5S0CLR9jC9-36kyauJRCL6UaTwoDynXyCcEeflU8Pc"
+            [src]="highlight.image"
           />
           <div
             class="absolute inset-0 flex flex-col justify-end bg-linear-to-t from-primary/80 via-transparent to-transparent p-6"
           >
-            <h3 class="text-xl font-bold text-white">
-              Distribución Automatizada
-            </h3>
-            <p class="text-sm text-white/80">
-              Gestión inteligente de inventarios con IA.
-            </p>
+            <h3 class="text-xl font-bold text-white">{{ highlight.title }}</h3>
+            @if (i === 0) {
+            <p class="text-sm text-white/80">{{ highlight.description }}</p>
+            }
           </div>
         </div>
-        <div
-          class="group relative overflow-hidden rounded-xl bg-surface-container-low"
-        >
-          <img
-            class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-            data-alt="Close-up of high-quality electronic circuit boards being inspected under blue technical lighting"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAC-IKjY0uID_LtiprXzwBo15EB5HDraRn6f_pEf4T7UTfMMqNm5EEb5wyHwbtXzxhmLHROMtOIdSEpufDjHo9xKoAarHup2N2DNLzqXzWZOjNSO_heNkZrSCejYB06DSp1veOcx3UsX4WkgYI3rMtoiTReppj_UE6CpFkU4Er3iuJ9F3nUaqvy4xPWArJquon28_xJSjbUOX5eEv2fsNMV9-DmwjNJK26ECf95A28JMsdqL-_2yEM6UKoQCSZ5SZquyKX1ZEPIqjU"
-          />
-          <div
-            class="absolute inset-0 flex flex-col justify-end bg-linear-to-t from-primary/80 via-transparent to-transparent p-4"
-          >
-            <h3 class="text-lg font-bold text-white">Componentes Elite</h3>
-          </div>
-        </div>
-        <div
-          class="group relative overflow-hidden rounded-xl bg-surface-container-low"
-        >
-          <img
-            class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-            data-alt="Logistics specialist using a tablet in front of a row of delivery trucks at a docking station"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGaDvg8CvszsgwgsRUi6n20rDRkP4RZBt7gJwDLI5onI76tQ4JiymEtqDlHXbLuNXS86QU4tTSfEAu6-5wuzTUxScyyYqIHVbAPDwkqWG9BZ6DtjrZ-5YsnIkEDmeyzW6PaPxpsTx3EglXhSMy7RKwTuzY6uvdzBsfH-4kNtDubzpIJ6_g1zwLnmcp33EcCxLjPrQ999PYjlLRDSQKL7ZOG_7mLHN6RDTfGu_1c_WX7VD3z5OrUwK0tFiFs2mxms6bYKWb03oT4OE"
-          />
-          <div
-            class="absolute inset-0 flex flex-col justify-end bg-linear-to-t from-primary/80 via-transparent to-transparent p-4"
-          >
-            <h3 class="text-lg font-bold text-white">Logística Global</h3>
-          </div>
-        </div>
+        }
       </div>
     </section>
     <section class="space-y-6">
@@ -149,38 +124,22 @@
             </tr>
           </thead>
           <tbody class="divide-y divide-outline-variant/10">
+            @for (pricing of provider.pricing; track pricing.unitPrice) {
             <tr class="transition-colors hover:bg-surface-container-low">
-              <td class="px-6 py-4 font-semibold text-primary">Small</td>
+              <td class="px-6 py-4 font-semibold text-primary">
+                {{ pricing.level }}
+              </td>
               <td class="px-6 py-4 text-on-surface-variant">
-                1 - 100 unidades
+                {{ pricing.quantity }}
               </td>
-              <td class="px-6 py-4 text-on-surface-variant">$45.00</td>
-              <td class="px-6 py-4 text-on-surface-variant">3-5 días</td>
-            </tr>
-            <tr class="transition-colors hover:bg-surface-container-low">
-              <td class="px-6 py-4 font-semibold text-primary">Medium</td>
               <td class="px-6 py-4 text-on-surface-variant">
-                101 - 500 unidades
+                {{ pricing.unitPrice }}
               </td>
-              <td class="px-6 py-4 text-on-surface-variant">$38.50</td>
-              <td class="px-6 py-4 text-on-surface-variant">7-10 días</td>
-            </tr>
-            <tr class="transition-colors hover:bg-surface-container-low">
-              <td class="px-6 py-4 font-semibold text-primary">Large</td>
               <td class="px-6 py-4 text-on-surface-variant">
-                501 - 2,000 unidades
+                {{ pricing.leadTime }}
               </td>
-              <td class="px-6 py-4 text-on-surface-variant">$32.00</td>
-              <td class="px-6 py-4 text-on-surface-variant">15-20 días</td>
             </tr>
-            <tr class="bg-primary text-on-primary-container">
-              <td class="px-6 py-4 font-bold">Enterprise</td>
-              <td class="px-6 py-4">2,000+ unidades</td>
-              <td class="px-6 py-4 font-bold text-tertiary-fixed">
-                Contacto Directo
-              </td>
-              <td class="px-6 py-4">Prioritario</td>
-            </tr>
+            }
           </tbody>
         </table>
       </div>
@@ -325,17 +284,16 @@
               <th-icon name="login-2" class="text-lg" />
               Iniciar sesión
             </a>
-            <a
-              routerLink="/providers/list"
+            <button
               th-btn="outlined"
               [th-btn-full-width]="true"
+              (click)="showSimilarProviders()"
             >
               Ver proveedores similares
-            </a>
+            </button>
           </div>
         </div>
       </div>
-      <!-- Trust Stats Card -->
       <div
         class="relative overflow-hidden rounded-xl bg-primary p-8 text-on-primary-container"
       >
@@ -348,18 +306,25 @@
         <div class="relative z-10 grid grid-cols-2 gap-4">
           <div>
             <p class="mb-1 text-xs opacity-70">Tasa de Entrega</p>
-            <p class="font-heading text-2xl font-bold">99.2%</p>
+            <p class="font-heading text-2xl font-bold">
+              {{ provider.metrics.deliveryRate }}%
+            </p>
           </div>
           <div>
             <p class="mb-1 text-xs opacity-70">Respuesta Prom.</p>
-            <p class="font-heading text-2xl font-bold">&lt; 2h</p>
+            <p class="font-heading text-2xl font-bold">
+              {{ provider.metrics.avgResponseTime }}
+            </p>
           </div>
           <div class="col-span-2 mt-4 border-t border-white/10 pt-4">
             <p class="mb-1 text-xs opacity-70">Capacidad Mensual</p>
-            <p class="font-heading text-xl font-bold">50,000+ unidades</p>
+            <p class="font-heading text-xl font-bold">
+              {{ provider.metrics.monthlyCapacity }}
+            </p>
           </div>
         </div>
       </div>
     </div>
   </aside>
 </div>
+}

@@ -66,83 +66,68 @@
         horas.
       </p>
     </div>
-    <form action="#" class="space-y-5">
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-5">
       <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
-        <div class="space-y-1.5">
-          <label
-            class="block text-xs font-semibold tracking-wider text-on-surface-variant uppercase"
-          >
-            Nombre
-          </label>
+        <th-form-field label="Nombre" appeareance="tonal">
           <input
-            class="focus:bg-surface-container-lowest w-full rounded-lg border-none bg-surface-container-low px-4 py-3 text-sm transition-all focus:ring-2 focus:ring-secondary"
+            formControlName="name"
+            th-input
             placeholder="Ej. Alejandro Torres"
-            required=""
-            type="text"
           />
-          <p class="text-error hidden text-[10px] italic">
-            * Este campo es obligatorio
-          </p>
-        </div>
-        <div class="space-y-1.5">
-          <label
-            class="block text-xs font-semibold tracking-wider text-on-surface-variant uppercase"
-            >Empresa</label
-          >
+          <th-error error-name="required"> Este campo es obligatorio </th-error>
+        </th-form-field>
+        <th-form-field label="Empresa" appeareance="tonal">
           <input
-            class="focus:bg-surface-container-lowest w-full rounded-lg border-none bg-surface-container-low px-4 py-3 text-sm transition-all focus:ring-2 focus:ring-secondary"
+            th-input
+            formControlName="company"
             placeholder="Nombre de su corporación"
-            required=""
-            type="text"
           />
-        </div>
+        </th-form-field>
       </div>
-      <div class="space-y-1.5">
-        <label
-          class="block text-xs font-semibold tracking-wider text-on-surface-variant uppercase"
-          >Correo electrónico</label
-        >
-        <input
-          class="focus:bg-surface-container-lowest w-full rounded-lg border-none bg-surface-container-low px-4 py-3 text-sm transition-all focus:ring-2 focus:ring-secondary"
-          placeholder="alejandro@empresa.com"
-          required=""
-          type="email"
-        />
+      <div>
+        <th-form-field label="Correo electrónico" appeareance="tonal">
+          <input
+            th-input
+            formControlName="email"
+            type="email"
+            placeholder="Correo electrónico"
+            class="w-full"
+          />
+          <th-error error-name="required">
+            El correo electrónico es requerido
+          </th-error>
+          <th-error error-name="email">
+            Esta dirección de correo electrónico es inválida
+          </th-error>
+        </th-form-field>
       </div>
-      <div class="space-y-1.5">
-        <label
-          class="block text-xs font-semibold tracking-wider text-on-surface-variant uppercase"
-          >Proveedor seleccionado</label
-        >
-        <div class="relative">
-          <select
-            class="focus:bg-surface-container-lowest w-full cursor-pointer appearance-none rounded-lg border-none bg-surface-container-low px-4 py-3 text-sm transition-all focus:ring-2 focus:ring-secondary"
-          >
-            <option disabled="" selected="" value="">
-              Seleccione un proveedor
-            </option>
-            <option value="1">Suministros Globales S.A.</option>
-            <option value="2">Logística Norte-Sur</option>
-            <option value="3">Tecnologías de Manufactura Avanzada</option>
-            <option value="4">Construcciones e Infraestructura Elite</option>
+      <div>
+        <th-form-field label="Categoría" appeareance="tonal">
+          <select th-input formControlName="category">
+            <option disabled selected value="">Seleccione una categoría</option>
+
+            @for (category of categories; track category.id) {
+            <option [value]="category.id">{{ category.name }}</option>
+            }
+            <option value="other">Otra</option>
           </select>
-          <th-icon
-            name="chevron-down"
-            class="pointer-events-none absolute top-1/2 right-4 -translate-y-1/2 text-on-surface-variant"
-          />
-        </div>
+          <th-error> La categoría de tu compañía es requerida </th-error>
+        </th-form-field>
       </div>
-      <div class="space-y-1.5">
-        <label
-          class="block text-xs font-semibold tracking-wider text-on-surface-variant uppercase"
-          >Mensaje</label
-        >
-        <textarea
-          class="focus:bg-surface-container-lowest w-full resize-none rounded-lg border-none bg-surface-container-low px-4 py-3 text-sm transition-all focus:ring-2 focus:ring-secondary"
-          placeholder="Describa brevemente su requerimiento..."
-          required=""
-          rows="4"
-        ></textarea>
+      <div>
+        <th-form-field label="Sobre tu compañía" appeareance="tonal">
+          <textarea
+            formControlName="message"
+            th-input
+            placeholder="Describa brevemente su compañía..."
+            class="resize-none"
+            required=""
+            rows="4"
+          ></textarea>
+          <th-error error-name="required">
+            Es necesario que envies este campo
+          </th-error>
+        </th-form-field>
       </div>
       <div class="pt-4">
         <button th-btn [th-btn-full-width]="true" type="submit" icon="send">

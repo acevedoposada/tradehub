@@ -1,4 +1,4 @@
-import { computed, Injectable, signal } from "@angular/core";
+import { afterNextRender, computed, Injectable, signal } from "@angular/core";
 import { categories } from "@app/constants/categories";
 import { Provider, providers } from "@app/constants/providers";
 
@@ -8,13 +8,19 @@ export default class ProvidersService {
 
   constructor() {
     this.providers.set(providers);
-    this._checkSavedFavorites()
+    afterNextRender(() => {
+      this._checkSavedFavorites()
+    })
   }
 
   availableCategories = computed(() => {
     const usedCategoryIds = new Set(providers.map(provider => provider.category));
     return categories.filter(category => usedCategoryIds.has(category.id))
   })
+
+  getProviderById(id: string): Provider | undefined {
+    return this.providers().find(provider => provider.id.toString() === id)
+  }
 
   setProviderFavorite(id: string | number) {
     const providerIndex = this.providers().findIndex(prov => prov.id === id)
